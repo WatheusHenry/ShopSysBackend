@@ -31,6 +31,16 @@ class SalesController extends Controller
         return response()->json($sale);
     }
 
+    public function showByUser($id)
+    {
+        $sales = $this->salesService->getSaleByUser($id);
+
+        if (count($sales) == 0) {
+            return response()->json(['message' => 'Vendedor não possui vendas'], 404);
+        }
+        return response()->json($sales);
+    }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([

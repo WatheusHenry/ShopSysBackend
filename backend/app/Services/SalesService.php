@@ -23,11 +23,16 @@ class SalesService
     return $this->salesRepository->getById($id);
   }
 
+  public function getSaleByUser($id)
+  {
+    return $this->salesRepository->getByUser($id);
+  }
+
   public function createSale(array $data)
   {
-    $commission = $data['amount'] * 0.08;
+    $commission = $data['amount'] * 0.085;
     $data['commission'] = $commission;
-    
+
     return $this->salesRepository->create($data);
   }
 

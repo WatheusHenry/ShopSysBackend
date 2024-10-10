@@ -14,4 +14,9 @@ class Sales extends Model
         'seller_id',
         'commission'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'seller_id');
+    }
 }

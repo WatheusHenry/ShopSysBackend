@@ -9,12 +9,18 @@ class SalesRepository implements SalesRepositoryInterface
 {
   public function getAll()
   {
-    return Sales::all();
+
+    return Sales::with('user:id,name,email')->get();
   }
 
   public function getById($id)
   {
-    return Sales::find($id);
+    return Sales::with('user:id,name,email')->find($id);
+  }
+
+  public function getByUser($id)
+  {
+    return Sales::with('user:id,name,email')->where('seller_id', $id)->get();
   }
 
   public function create(array $data)

@@ -21,12 +21,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
 
 
-Route::get('sales', [SalesController::class, 'index']);
-Route::get('sales/{id}', [SalesController::class, 'show']);
-Route::post('sales', [SalesController::class, 'store']);
-Route::put('sales/{id}', [SalesController::class, 'update']);
-Route::delete('sales/{id}', [SalesController::class, 'destroy']);
+Route::middleware('auth:api')->group(function () {
+    Route::get('sales', [SalesController::class, 'index']);
+    Route::get('sales/{id}', [SalesController::class, 'show']);
+    Route::get('sales/user/{id}', [SalesController::class, 'showByUser']);
+    Route::post('sales', [SalesController::class, 'store']);
+    Route::put('sales/{id}', [SalesController::class, 'update']);
+    Route::delete('sales/{id}', [SalesController::class, 'destroy']);
+});
+

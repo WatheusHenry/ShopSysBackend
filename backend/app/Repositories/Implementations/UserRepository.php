@@ -26,4 +26,9 @@ class UserRepository implements UserRepositoryInterface
   {
     return User::where('id', $id)->first();
   }
+
+  public function getAll()
+  {
+    return User::all();
+  }
 }
