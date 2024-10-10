@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sales', function (Blueprint $table) {
-            $table->id(); // ID da venda
-            $table->unsignedBigInteger('seller_id'); // ID do vendedor
-            $table->decimal('amount', 10, 2); // Valor da venda
+            $table->id();
+            $table->unsignedBigInteger('seller_id');
+            $table->decimal('amount', 10, 2);
+            $table->decimal('commission',10,2);
             $table->timestamps();
-
             $table->foreign('seller_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
