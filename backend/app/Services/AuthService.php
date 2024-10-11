@@ -26,6 +26,7 @@ class AuthService
     $token = JWTAuth::fromUser($user);
 
     return [
+      'user_id' => $user->id,
       'access_token' => $token,
       'token_type' => 'Bearer',
     ];
@@ -36,8 +37,10 @@ class AuthService
     if (!$token = Auth::attempt($credentials)) {
       throw new \Exception('Unauthorized');
     }
+    $user = Auth::user();
 
     return [
+      'user_id' => $user->id,
       'access_token' => $token,
       'token_type' => 'Bearer',
     ];
