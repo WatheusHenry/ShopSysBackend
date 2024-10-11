@@ -15,11 +15,15 @@ class DailyReportMail extends Mailable
 
     public $sales;
     public $userName;
+    public $totalSales;
 
-    public function __construct($sales, $userName)
+
+    public function __construct($sales, $userName, $totalSales)
     {
         $this->sales = $sales;
         $this->userName = $userName;
+        $this->totalSales = $totalSales;
+
     }
 
     public function build()

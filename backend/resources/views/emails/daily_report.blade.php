@@ -77,6 +77,8 @@
       </tbody>
     </table>
 
+    <p><strong>Valor Total das Vendas: R$ {{ number_format($totalSales, 2, ',', '.') }}</strong></p> <!-- Exibe o total aqui -->
+
     <p>Atenciosamente,</p>
     <p>Sua Equipe</p>
   </div>

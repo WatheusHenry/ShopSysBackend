@@ -15,8 +15,9 @@ class SendDailyReport extends Command
 
     protected $salesRepository;
 
-    
-    public function __construct(SalesRepositoryInterface $salesRepository){
+
+    public function __construct(SalesRepositoryInterface $salesRepository)
+    {
         parent::__construct();
         $this->salesRepository = $salesRepository;
     }
@@ -26,12 +27,14 @@ class SendDailyReport extends Command
     public function handle()
     {
         $sales = $this->salesRepository->getAll();
+        
+        $total_sales = $sales->sum('amount');
 
-        $userName = 'Teste';
+        $userName = 'Usuarío';
 
         $recipientEmail = env('MAIL_FROM_ADDRESS');
 
-        Mail::to($recipientEmail)->send(new DailyReportMail($sales, $userName));
+        Mail::to($recipientEmail)->send(new DailyReportMail($sales, $userName, $total_sales));
 
         $this->info('Email enviado com sucesso!');
     }
