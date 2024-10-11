@@ -112,6 +112,13 @@ JWT_SECRET=C8Ijr2wtK1gNUjjO2cDED1oVTF1y5nVUbdWFnz4Mk5Bb0DuX2Lcd7pUvVasfNGbq
   Após instalar e rodar o servidor local, utilize uma ferramenta como Postman ou Insomnia para testar as rotas.
   Certifique-se de adicionar o token JWT no header das requisições protegidas.
   Utilize as rotas de vendas e usuários para gerenciar os dados no sistema.
+
+## Relatório encaminhado por e-mail
+  Para simular um envio de email com relatório de vendar executar o comando:
+  ```bash
+  php artisan email:send-daily-report
+  ```
+
 ## Padrão Repository Service
    Este projeto segue o padrão Repository Service para separar as responsabilidades entre as camadas de repositório (persistência) e serviço (lógica de negócio).
 
