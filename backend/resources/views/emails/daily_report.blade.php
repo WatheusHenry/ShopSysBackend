@@ -70,7 +70,7 @@
         <tr>
           <td>{{ $sale->id }}</td>
           <td>{{ number_format($sale->amount, 2, ',', '.') }}</td>
-          <td>{{ $sale->seller->name ?? 'Desconhecido' }}</td> <!-- Se você tiver um relacionamento -->
+          <td>{{ $sale->user->name ?? 'Desconhecido' }}</td> <!-- Se você tiver um relacionamento -->
           <td>{{ $sale->created_at->format('d/m/Y H:i') }}</td>
         </tr>
         @endforeach

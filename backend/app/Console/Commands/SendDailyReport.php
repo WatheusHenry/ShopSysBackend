@@ -26,8 +26,7 @@ class SendDailyReport extends Command
 
     public function handle()
     {
-        $sales = $this->salesRepository->getAll();
-        
+        $sales = $this->salesRepository->getAll()->load('user');
         $total_sales = $sales->sum('amount');
 
         $userName = 'Usuarío';
