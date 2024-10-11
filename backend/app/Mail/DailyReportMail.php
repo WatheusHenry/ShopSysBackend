@@ -13,14 +13,13 @@ class DailyReportMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $sales;
+    public $userName;
+
+    public function __construct($sales, $userName)
     {
-        //
+        $this->sales = $sales;
+        $this->userName = $userName;
     }
 
     public function build()

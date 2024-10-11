@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Relatório Diário</title>
+  <title>Relatório Diário de Vendas</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -31,23 +31,51 @@
       color: #555;
     }
 
-    footer {
+    table {
+      width: 100%;
+      border-collapse: collapse;
       margin-top: 20px;
-      text-align: center;
-      font-size: 0.8em;
-      color: #aaa;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      text-align: left;
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <h1>Relatório Diário</h1>
-    <p>Olá,</p>
-    <p>Este é o seu relatório diário. Aqui estão as atualizações e informações relevantes:</p>
+    <h1>Relatório Diário de Vendas</h1>
+    <p>Olá {{ $userName }},</p>
+    <p>Abaixo estão os detalhes das vendas:</p>
 
-    <!-- Adicione seu conteúdo dinâmico aqui -->
-    <p>Exemplo de conteúdo:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Valor</th>
+          <th>Vendedor</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($sales as $sale)
+        <tr>
+          <td>{{ $sale->id }}</td>
+          <td>{{ number_format($sale->amount, 2, ',', '.') }}</td>
+          <td>{{ $sale->seller->name ?? 'Desconhecido' }}</td> <!-- Se você tiver um relacionamento -->
+          <td>{{ $sale->created_at->format('d/m/Y H:i') }}</td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
 
     <p>Atenciosamente,</p>
     <p>Sua Equipe</p>
